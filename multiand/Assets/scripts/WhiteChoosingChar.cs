@@ -7,69 +7,66 @@ public class WhiteChoosingChar : MonoBehaviour
 {
     public Menu2Control gameController;
     public GameObject arrowPrefab;
-    public Transform listT;
-    GameObject[] characters;
+    public Transform listOfChars;
+    Collider[] characters;
     GameObject arrow;
     GameSet gameSet;
     Settings settings;
-    string[] buttonsSet;
-    int index;
 
-	void Start()
+    void Start() 
     {
+        arrow = null;
         settings = GameObject.Find("settings").GetComponent<Settings>();
-        index = 0;
         gameSet = GameObject.Find("gameSetter").GetComponent<GameSet>();
-        //buttonsSet = gameSetter.getWhiteSet();
-        characters = gameSet.getCharacters();
-        arrow = Instantiate(arrowPrefab, new Vector3(listT.position.x - 30, listT.position.y, 0), new Quaternion(0, 0, 0, 0), transform) as GameObject;
+
+        for (int i = 0; i < listOfChars.childCount; i++)
+        {
+            characters[i] = listOfChars.GetChild(i).GetComponent<Collider>();
+        }
+
         if (gameSet.getWhitePlays())
         {
             IAmABot();
         }
-	}
-	
-	void Update()
+    }
+
+    void Update() 
     {
-        if (settings.getIsPaused())
+        if (Input.touchCount > 0)
         {
-            return;
-        }
+            
+            RaycastHit hit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
 
-        if (Input.GetButtonDown(buttonsSet[0]))
-        {
-            if (Input.GetAxis(buttonsSet[0]) < 0)
+            if (Physics.Raycast(ray, out hit))
             {
-                if (index < characters.Length - 1)
+                if (hit.collider == null)
                 {
-                    index++;
-                    arrow.transform.position -= new Vector3(0, 50, 0);
+                    return;
                 }
 
-            }
-            else if (Input.GetAxis(buttonsSet[0]) > 0)
-            {
-                if (index > 0)
+                for (int i = 0; i < characters.Length; i++)
                 {
-                    index--;
-                    arrow.transform.position += new Vector3(0, 50, 0);
+                    if (hit.collider == characters[i])
+                    {
+                        gameSet.setWhiteCharacter(i);
+
+                        if (arrow != null)
+                        {
+                            Destroy(arrow);
+                        }
+
+                        Transform t = characters[i].transform;
+
+                        arrow = Instantiate(arrowPrefab, new Vector3(t.position.x - 25, t.position.y, t.position.z), new Quaternion(0, 0, 0, 0));
+                    }
                 }
             }
-
-            gameSet.setWhiteCharacter(index);
-            Input.ResetInputAxes();
         }
-
-        gameController.setWhitePicsAndDesc(index);
-
-        if (Input.GetKey(KeyCode.Return))
-            SceneManager.LoadScene("scena1");
     }
 
     void IAmABot()
     {
-        index = Random.Range(0, characters.Length);
-        gameSet.setWhiteCharacter(index);
-        arrow.SetActive(false);
+        //
     }
 }

@@ -34,8 +34,10 @@ public class Menu2Control : MonoBehaviour
         for (int i = 0; i < pics.GetLength(0); i++)
         {
             imgPrefab.sprite = pics[i, 3]; //i keep little avatars on the fourth position
-            Instantiate(imgPrefab, new Vector3(whiteList.transform.position.x, whiteList.transform.position.y - i * distOnList, 0), new Quaternion(0, 0, 0, 0), whiteList);
-            Instantiate(imgPrefab, new Vector3(blackList.transform.position.x, blackList.transform.position.y - i * distOnList, 0), new Quaternion(0, 0, 0, 0), blackList);
+            Image img = (Image)Instantiate(imgPrefab, new Vector3(whiteList.transform.position.x, whiteList.transform.position.y - i * distOnList, 0), new Quaternion(0, 0, 0, 0), whiteList);
+            img.name = "whiteChar" + (i + 1);
+            img = (Image)Instantiate(imgPrefab, new Vector3(blackList.transform.position.x, blackList.transform.position.y - i * distOnList, 0), new Quaternion(0, 0, 0, 0), blackList);
+            img.name = "blackChar" + (i + 1);
         }
 	}
 
