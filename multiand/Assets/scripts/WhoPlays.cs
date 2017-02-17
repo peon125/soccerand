@@ -11,40 +11,16 @@ public class WhoPlays : MonoBehaviour
 	
 	void Update() 
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.touchCount > 0)
         {
-            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y)), Vector2.zero);
+            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
 
             if (hit.collider == null)
                 return;
 
-            if(hit.collider.gameObject.name == "white")
-            {
-                gameSet.setWhitePlays(!gameSet.getWhitePlays());
+            WhitePlays(hit);
 
-                if(gameSet.getWhitePlays())
-                {
-                    white.GetComponent<Image>().color = Color.green;
-                }
-                else
-                {
-                    white.GetComponent<Image>().color = Color.red;
-                }
-            }
-
-            if(hit.collider.gameObject.name == "black")
-            {
-                gameSet.setBlackPlays(!gameSet.getBlackPlays());
-
-                if(gameSet.getBlackPlays())
-                {
-                    black.GetComponent<Image>().color = Color.green;
-                }
-                else
-                {
-                    black.GetComponent<Image>().color = Color.red;
-                }
-            }
+            BlackPlays(hit);
 
             if (hit.collider.gameObject.name == "play")
             {
@@ -52,4 +28,38 @@ public class WhoPlays : MonoBehaviour
             }
         }
 	}
+
+    void WhitePlays(RaycastHit2D hit)
+    {
+        if(hit.collider.gameObject.name == "white")
+        {
+            gameSet.setWhitePlays(!gameSet.getWhitePlays());
+
+            if(gameSet.getWhitePlays())
+            {
+                white.GetComponent<Image>().color = Color.green;
+            }
+            else
+            {
+                white.GetComponent<Image>().color = Color.red;
+            }
+        }
+    }
+
+    void BlackPlays(RaycastHit2D hit)
+    {
+        if(hit.collider.gameObject.name == "black")
+        {
+            gameSet.setBlackPlays(!gameSet.getBlackPlays());
+
+            if(gameSet.getBlackPlays())
+            {
+                black.GetComponent<Image>().color = Color.green;
+            }
+            else
+            {
+                black.GetComponent<Image>().color = Color.red;
+            }
+        }
+    }
 }

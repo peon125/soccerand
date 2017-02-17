@@ -34,17 +34,21 @@ public class Menu2Control : MonoBehaviour
         for (int i = 0; i < pics.GetLength(0); i++)
         {
             imgPrefab.sprite = pics[i, 3]; //i keep little avatars on the fourth position
-            Image img = (Image)Instantiate(imgPrefab, new Vector3(whiteList.transform.position.x, whiteList.transform.position.y - i * distOnList, 0), new Quaternion(0, 0, 0, 0), whiteList);
-            img.name = "whiteChar" + (i + 1);
-            img = (Image)Instantiate(imgPrefab, new Vector3(blackList.transform.position.x, blackList.transform.position.y - i * distOnList, 0), new Quaternion(0, 0, 0, 0), blackList);
-            img.name = "blackChar" + (i + 1);
+            Image imgWhite = (Image)Instantiate(imgPrefab, new Vector3(whiteList.transform.position.x, whiteList.transform.position.y - i * distOnList, 0), new Quaternion(0, 0, 0, 0), whiteList);
+            imgWhite.name = "whiteChar" + (i + 1);
+            imgWhite.GetComponent<CharAvatar>().setIndex(i);
+            imgWhite.GetComponent<CharAvatar>().setWhichPlayer("white");
+            Image imgBlack = (Image)Instantiate(imgPrefab, new Vector3(blackList.transform.position.x, blackList.transform.position.y - i * distOnList, 0), new Quaternion(0, 0, 0, 0), blackList);
+            imgBlack.name = "blackChar" + (i + 1);
+            imgBlack.GetComponent<CharAvatar>().setIndex(i);
+            imgBlack.GetComponent<CharAvatar>().setWhichPlayer("black");
         }
 	}
 
     public void setWhitePicsAndDesc(int i)
     {
         whiteBigPic.sprite = pics[i, 4];
-
+            
         for (int j = 0; j < whiteSpellPics.Length; j++)
         {
             whiteSpellPics[j].sprite = pics[i, j];

@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class WhiteChoosingChar : MonoBehaviour 
 {
     public Menu2Control gameController;
     public GameObject arrowPrefab;
     public Transform listOfChars;
-    Collider[] characters;
+    GameObject[] characters;
     GameObject arrow;
     GameSet gameSet;
     Settings settings;
@@ -18,11 +19,7 @@ public class WhiteChoosingChar : MonoBehaviour
         arrow = null;
         settings = GameObject.Find("settings").GetComponent<Settings>();
         gameSet = GameObject.Find("gameSetter").GetComponent<GameSet>();
-
-        for (int i = 0; i < listOfChars.childCount; i++)
-        {
-            characters[i] = listOfChars.GetChild(i).GetComponent<Collider>();
-        }
+        characters = new GameObject[0];
 
         if (gameSet.getWhitePlays())
         {
@@ -30,36 +27,38 @@ public class WhiteChoosingChar : MonoBehaviour
         }
     }
 
-    void Update() 
+    void Update()
     {
-        if (Input.touchCount > 0)
+        if (Input.touchCount <= 0)
+            return;
+        
+        Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
+
+        RaycastHit hit;// = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+
+        //Debug.Log(hit.ToString());
+
+        if (Physics.Raycast(ray, out hit))
         {
-            
-            RaycastHit hit;
-            Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
-
-            if (Physics.Raycast(ray, out hit))
+            if (hit.collider == null)
             {
-                if (hit.collider == null)
-                {
-                    return;
-                }
+                return;
+            }
 
-                for (int i = 0; i < characters.Length; i++)
+            for (int i = 0; i < listOfChars.childCount; i++)
+            {
+                if (hit.collider == listOfChars.GetChild(i).GetComponent<BoxCollider2D>())
                 {
-                    if (hit.collider == characters[i])
+                    gameSet.setWhiteCharacter(i);
+
+                    if (arrow != null)
                     {
-                        gameSet.setWhiteCharacter(i);
-
-                        if (arrow != null)
-                        {
-                            Destroy(arrow);
-                        }
-
-                        Transform t = characters[i].transform;
-
-                        arrow = Instantiate(arrowPrefab, new Vector3(t.position.x - 25, t.position.y, t.position.z), new Quaternion(0, 0, 0, 0));
+                        Destroy(arrow);
                     }
+
+                    Transform t = listOfChars.GetChild(i).transform;
+
+                    arrow = Instantiate(arrowPrefab, new Vector3(t.position.x - 20, t.position.y, t.position.z), new Quaternion(0, 0, 0, 0), t);
                 }
             }
         }

@@ -1,20 +1,18 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj" RefactoringSettings.EnableRefactorings="True">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\scripts\BlackChoosingChar.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\ChoosingChars.cs">
     <Files>
-      <File FileName="Assets\scripts\WhiteChoosingChar.cs" Line="65" Column="10" />
-      <File FileName="Assets\scripts\BlackChoosingChar.cs" Line="38" Column="1" />
+      <File FileName="Assets\scripts\WhoPlays.cs" Line="45" Column="14" />
       <File FileName="Assets\scripts\GameSet.cs" Line="1" Column="1" />
       <File FileName="Assets\scripts\PlayerHandler.cs" Line="1" Column="1" />
-      <File FileName="Assets\scripts\Menu2Control.cs" Line="47" Column="9" />
-      <File FileName="Assets\ChoosingChars.cs" Line="7" Column="5" />
+      <File FileName="Assets\scripts\Menu2Control.cs" Line="44" Column="70" />
+      <File FileName="Assets\CharAvatar.cs" Line="31" Column="37" />
+      <File FileName="Assets\StartMatch.cs" Line="10" Column="15" />
+      <File FileName="Assets\ChoosingChars.cs" Line="17" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <RunToCursorBreakpoint file="D:\UnityProjects\Soccerand\multiand\Assets\scripts\WhiteChoosingChar.cs" line="56" column="21" />
-      <RunToCursorBreakpoint file="D:\UnityProjects\Soccerand\multiand\Assets\scripts\WhiteChoosingChar.cs" line="52" column="22" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>
