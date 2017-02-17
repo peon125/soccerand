@@ -11,20 +11,25 @@ public class WhoPlays : MonoBehaviour
 	
 	void Update() 
     {
+
+
         if (Input.touchCount > 0)
         {
-            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-
-            if (hit.collider == null)
-                return;
-
-            WhitePlays(hit);
-
-            BlackPlays(hit);
-
-            if (hit.collider.gameObject.name == "play")
+            for (int i = 0; i < Input.touchCount; i++)
             {
-                SceneManager.LoadScene("menu2");
+                RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.GetTouch(i).position), Vector2.zero);
+
+                if (hit.collider == null)
+                    return;
+
+                WhitePlays(hit);
+
+                BlackPlays(hit);
+
+                if (hit.collider.gameObject.name == "play")
+                {
+                    SceneManager.LoadScene("menu2");
+                }
             }
         }
 	}
