@@ -46,14 +46,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\CharAvatar.cs" />
-     <Compile Include="Assets\ChoosingChars.cs" />
-     <Compile Include="Assets\StartMatch.cs" />
-     <Compile Include="Assets\WhiteTouchingChars.cs" />
      <Compile Include="Assets\scripts\BallHandler.cs" />
      <Compile Include="Assets\scripts\BlackChoosingChar.cs" />
      <Compile Include="Assets\scripts\BlackPlays.cs" />
+     <Compile Include="Assets\scripts\CharAvatar.cs" />
      <Compile Include="Assets\scripts\CharactersPic.cs" />
+     <Compile Include="Assets\scripts\ChoosingChars.cs" />
      <Compile Include="Assets\scripts\ControlCharacter.cs" />
      <Compile Include="Assets\scripts\ControlRedCharacter.cs" />
      <Compile Include="Assets\scripts\CooldownCounter.cs" />
@@ -73,12 +71,16 @@
      <Compile Include="Assets\scripts\ScoreArea.cs" />
      <Compile Include="Assets\scripts\Settings.cs" />
      <Compile Include="Assets\scripts\ShotHandler.cs" />
+     <Compile Include="Assets\scripts\StartMatch.cs" />
+     <Compile Include="Assets\scripts\StoreSpellsPics.cs" />
      <Compile Include="Assets\scripts\TextFading.cs" />
      <Compile Include="Assets\scripts\WhiteChoosingChar.cs" />
      <Compile Include="Assets\scripts\WhitePlays.cs" />
+     <Compile Include="Assets\scripts\WhiteTouchingChars.cs" />
      <Compile Include="Assets\scripts\WhoPlays.cs" />
      <Compile Include="Assets\scripts\YellowCharacter.cs" />
      <Compile Include="Assets\scripts\wallInGate.cs" />
+     <Compile Include="Assets\scriptttt.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

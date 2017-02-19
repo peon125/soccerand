@@ -1,14 +1,16 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj" RefactoringSettings.EnableRefactorings="True">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\ChoosingChars.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\scriptttt.cs">
     <Files>
-      <File FileName="Assets\scripts\WhoPlays.cs" Line="45" Column="14" />
+      <File FileName="Assets\scripts\WhoPlays.cs" Line="1" Column="1" />
       <File FileName="Assets\scripts\GameSet.cs" Line="1" Column="1" />
       <File FileName="Assets\scripts\PlayerHandler.cs" Line="1" Column="1" />
-      <File FileName="Assets\scripts\Menu2Control.cs" Line="44" Column="70" />
-      <File FileName="Assets\CharAvatar.cs" Line="31" Column="37" />
-      <File FileName="Assets\StartMatch.cs" Line="10" Column="15" />
-      <File FileName="Assets\ChoosingChars.cs" Line="17" Column="1" />
+      <File FileName="Assets\scripts\Menu2Control.cs" Line="1" Column="1" />
+      <File FileName="Assets\scripts\ChoosingChars.cs" Line="1" Column="1" />
+      <File FileName="Assets\scripts\WhiteChoosingChar.cs" Line="1" Column="1" />
+      <File FileName="Assets\scripts\CharAvatar.cs" Line="1" Column="1" />
+      <File FileName="Assets\scripts\Settings.cs" Line="1" Column="1" />
+      <File FileName="Assets\scriptttt.cs" Line="26" Column="12" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

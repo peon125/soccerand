@@ -10,6 +10,8 @@ public class ControlCharacter : MonoBehaviour
     public float[] delays;
     public float speed, boundary;
     public float[] cooldowns;
+    public Sprite[] spellsPics;
+    public Sprite avatar, bigPic;
     Transform bulletsTransform;
     GameObject ball;
     CooldowsHandler cooldownsHandler;

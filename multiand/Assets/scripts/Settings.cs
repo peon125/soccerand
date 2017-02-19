@@ -38,4 +38,14 @@ public class Settings : MonoBehaviour
     {
         return isPaused;
     }
+
+    public void Klinkj()
+    {
+        Debug.Log("kliknal");
+    }
+
+    public void Klikajjakzjeb(string s)
+    {
+        Debug.Log(s);
+    }
 }

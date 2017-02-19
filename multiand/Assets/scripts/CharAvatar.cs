@@ -5,6 +5,7 @@ using UnityEngine;
 public class CharAvatar : MonoBehaviour 
 {
     public GameObject arrowPrefab;
+    Menu2Control gameController;
     GameSet gameSet;
     string whichPlayer; //possible only "white" or "black"
     int index;
@@ -12,25 +13,28 @@ public class CharAvatar : MonoBehaviour
 	void Start() 
     {
         gameSet = GameObject.Find("gameSetter").GetComponent<GameSet>();
+        gameController = GameObject.Find("gameController").GetComponent<Menu2Control>();
 	}
 
     void OnMouseDown()
     {
-        GameObject arrow = Instantiate(arrowPrefab, new Vector3(transform.position.x - 20, transform.position.y, transform.position.z), new Quaternion(0, 0, 0, 0), transform);
-
         if (whichPlayer == "white")
         {
             Destroy(GameObject.Find("whiteArrow"));
+            GameObject arrow = Instantiate(arrowPrefab, new Vector3(transform.position.x - 20, transform.position.y, transform.position.z), new Quaternion(0, 0, 0, 0), transform);
             arrow.name = "whiteArrow";
 
             gameSet.setWhiteCharacter(index);
+            gameController.setWhitePicsAndDesc(index);
         } 
         else if(whichPlayer == "black")
         {
             Destroy(GameObject.Find("blackArrow"));
+            GameObject arrow = Instantiate(arrowPrefab, new Vector3(transform.position.x + 20, transform.position.y, transform.position.z), new Quaternion(0, 90, 0, 0), transform);
             arrow.name = "blackArrow";
 
-            gameSet.setWhiteCharacter(index);
+            gameSet.setBlackCharacter(index);
+            gameController.setBlackPicsAndDesc(index);
         }
     }
 
