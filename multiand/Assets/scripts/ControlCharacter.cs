@@ -12,6 +12,7 @@ public class ControlCharacter : MonoBehaviour
     public float[] cooldowns;
     public Sprite[] spellsPics;
     public Sprite avatar, bigPic;
+    PlayerHandler ph;
     Transform bulletsTransform;
     GameObject ball;
     CooldowsHandler cooldownsHandler;
@@ -19,22 +20,24 @@ public class ControlCharacter : MonoBehaviour
     float characterDefaultXPosistion;
     string[] buttons;
     bool isABot;
+    int[] buttonsValues;
 
     void Start() 
     {
         isABot = false;
-        PlayerHandler ph = transform.parent.GetComponent<PlayerHandler>();
+        ph = transform.parent.GetComponent<PlayerHandler>();
         buttons =  ph.getButtons();
+        buttonsValues = ph.getButtonsValues();
         cooldownTexts = ph.getCooldownTexts();
         characterDefaultXPosistion = transform.position.x;
         cooldowns = new float[3];
         cooldownsHandler = ph.cooldownHandler;
         bulletsTransform = GameObject.Find("bullets").transform;
+        ball = GameObject.FindGameObjectWithTag("ball");
 
         if (buttons[0] == "0")
         {
             isABot = true;
-            ball = GameObject.FindGameObjectWithTag("ball");
         }
     }
 
@@ -44,6 +47,8 @@ public class ControlCharacter : MonoBehaviour
             IAmABot();
         else
         {
+            buttonsValues = ph.getButtonsValues();
+
             Move();
 
             Shoot();
@@ -59,7 +64,7 @@ public class ControlCharacter : MonoBehaviour
 
     void Move()
     {
-        transform.position += new Vector3(0f, 0f, (float)Math.Round(Input.GetAxis(buttons[0]) * speed));
+        transform.position += new Vector3(0f, 0f, (float)Math.Round(buttonsValues[0] * speed));
         transform.position = new Vector3(characterDefaultXPosistion, transform.position.y, Mathf.Clamp(transform.position.z, -boundary, boundary));
     }
 
@@ -68,7 +73,7 @@ public class ControlCharacter : MonoBehaviour
         for (int j = 1; j < buttons.Length; j++)
         {
             int i = j - 1;
-            if (Input.GetButtonDown(buttons[j]) && cooldowns[i] <= 0)
+            if (buttonsValues[i] == 1 && cooldowns[i] <= 0)
             {
                 GameObject shot = Instantiate(firesPrefabs[i], firesPrefabs[i].transform.position + transform.position, firesPrefabs[i].transform.rotation, bulletsTransform);
                 ShotHandler shotHandler = shot.GetComponent<ShotHandler>();

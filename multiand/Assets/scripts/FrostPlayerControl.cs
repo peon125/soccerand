@@ -13,28 +13,30 @@ public class FrostPlayerControl : MonoBehaviour
     public Sprite[] spellsPics;
     public Sprite avatar, bigPic;
     Transform bulletsTransform;
+    PlayerHandler ph;
     GameObject ball;
     CooldowsHandler cooldownsHandler;
     Text[] cooldownTexts;
     float characterDefaultXPosistion;
     string[] buttons;
     bool isABot, canFireSuperShot;
+    int[] buttonsValues;
 
     void Start() 
     {
-        isABot = false;
-        PlayerHandler ph = transform.parent.GetComponent<PlayerHandler>();
+        isABot = false;ph = transform.parent.GetComponent<PlayerHandler>();
         buttons =  ph.getButtons();
         cooldownTexts = ph.getCooldownTexts();
+        buttonsValues = ph.getButtonsValues();
         characterDefaultXPosistion = transform.position.x;
         cooldownsHandler = ph.cooldownHandler;
         bulletsTransform = GameObject.Find("bullets").transform;
         canFireSuperShot = false;
+        ball = GameObject.FindGameObjectWithTag("ball");
 
         if (buttons[0] == "0")
         {
             isABot = true;
-            ball = GameObject.FindGameObjectWithTag("ball");
         }
     }
 
@@ -44,6 +46,8 @@ public class FrostPlayerControl : MonoBehaviour
             IAmABot();
         else
         {
+            buttonsValues = ph.getButtonsValues();
+
             Move();
 
             Shoot();
@@ -59,20 +63,20 @@ public class FrostPlayerControl : MonoBehaviour
 
     void Move()
     {
-        transform.position += new Vector3(0f, 0f, (float)Math.Round(Input.GetAxis(buttons[0]) * speed));
+        transform.position += new Vector3(0f, 0f, (float)Math.Round(buttonsValues[0] * speed));
         transform.position = new Vector3(characterDefaultXPosistion, transform.position.y, Mathf.Clamp(transform.position.z, -boundary, boundary));
     }
 
     void Shoot()
     {
-        if(Input.GetButtonDown(buttons[1]) && cooldowns[0] <= 0)
+        if(buttonsValues[1] == 1 && cooldowns[0] <= 0)
         {
             GameObject shot = Instantiate(firesPrefabs[0], firesPrefabs[0].transform.position + transform.position, firesPrefabs[0].transform.rotation, bulletsTransform) as GameObject;
             shot.GetComponent<MeshRenderer>().material.color = transform.GetChild(0).GetComponent<Renderer>().material.color;
             cooldowns[0] = delays[0];
         }
 
-        if (Input.GetButtonDown(buttons[2]) && cooldowns[1] <= 0 && canFireSuperShot)
+        if (buttonsValues[2] == 1 && cooldowns[1] <= 0 && canFireSuperShot)
         {
             GameObject shot = Instantiate(firesPrefabs[3], firesPrefabs[3].transform.position + transform.position, firesPrefabs[3].transform.rotation, bulletsTransform) as GameObject;
             shot.GetComponent<MeshRenderer>().material.color = transform.GetChild(0).GetComponent<Renderer>().material.color;
@@ -80,7 +84,7 @@ public class FrostPlayerControl : MonoBehaviour
 
             canFireSuperShot = false;
         }
-        else if (Input.GetButtonDown(buttons[2]) && cooldowns[1] <= 0 && !canFireSuperShot)
+        else if (buttonsValues[2] == 1 && cooldowns[1] <= 0 && !canFireSuperShot)
         {
             float posX = 0;
             if (transform.position.x > 0)
@@ -99,7 +103,7 @@ public class FrostPlayerControl : MonoBehaviour
             cooldowns[1] = delays[1];
         }
 
-        if(Input.GetButtonDown(buttons[3]) && cooldowns[2] <= 0)
+        if(buttonsValues[3] == 1 && cooldowns[2] <= 0)
         {
             GameObject shot = Instantiate(firesPrefabs[2], firesPrefabs[2].transform.position + transform.position, firesPrefabs[2].transform.rotation, bulletsTransform) as GameObject;
             ShotHandler shotHandler = shot.GetComponent<ShotHandler>();

@@ -9,13 +9,18 @@ public class PlayerHandler : MonoBehaviour
     public CooldowsHandler cooldownHandler;
     Text[] cooldownTexts;
     string[] buttonsSet;
+    int[] buttonsValues;
     GameSet gameSetter;
 	
 	void Start () 
     {
         gameSetter = GameObject.Find("gameSetter").GetComponent<GameSet>();
-
-
+        buttonsValues = new int[4];
+        for (int i = 0; i < buttonsValues.Length; i++)
+        {
+            buttonsValues[i] = 0;
+        }
+       
         if (gameObject.name == "player1")
         {
             //buttonsSet = gameSetter.getWhiteSet();
@@ -39,4 +44,25 @@ public class PlayerHandler : MonoBehaviour
     {
         return buttonsSet;
     }
+
+    public void setButtonValueToOne(int i)
+    {
+        buttonsValues[i] = 1;
+    }
+
+    public void setButtonValueToMinusOne(int i)
+    {
+        buttonsValues[i] = -1;
+    }
+
+    public void setButtonValueToZero(int i)
+    {
+        buttonsValues[i] = 0;
+    }
+
+    public int[] getButtonsValues()
+    {
+        return buttonsValues;
+    }
+
 }
