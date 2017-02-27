@@ -5,30 +5,32 @@ using UnityEngine.UI;
 
 public class Menu2Control : MonoBehaviour 
 {
-    public Sprite[] picsFire, picsFrost;
-    public string[] fireSpellDesc, frostSpellDesc;
     public Image whiteBigPic, blackBigPic;
     public Image[] whiteSpellPics, blackSpellPics;
     public Transform whiteList, blackList;
     public Image imgPrefab;
     public float distOnList;
     Sprite[,] pics;
+    GameObject[] chars;
     string[,] descriptions;
+    GameSet gameSet;
 
 	void Start () 
     {
+        gameSet = GameObject.Find("gameSetter").GetComponent<GameSet>();
+        chars = gameSet.getCharacters();
         pics = new Sprite[2, 5];
         descriptions = new string[2,3];
         for (int i = 0; i < pics.GetLength(1); i++)
         {
-            pics[0, i] = picsFire[i];
-            pics[1, i] = picsFrost[i];
+            pics[0, i] = chars[0].GetComponent<ControlCharacter>().pics[i];
+            pics[1, i] = chars[1].GetComponent<FrostPlayerControl>().pics[i];
         }
 
         for (int i = 0; i < descriptions.GetLength(1); i++)
         {
-            descriptions[0, i] = fireSpellDesc[i];
-            descriptions[1, i] = frostSpellDesc[i];
+            descriptions[0, i] = chars[0].GetComponent<ControlCharacter>().descriptions[i];
+            descriptions[1, i] = chars[1].GetComponent<FrostPlayerControl>().descriptions[i];
         }
 
         for (int i = 0; i < pics.GetLength(0); i++)

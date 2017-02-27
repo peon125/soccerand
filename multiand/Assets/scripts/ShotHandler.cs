@@ -18,7 +18,7 @@ public class ShotHandler : MonoBehaviour {
             force = -force;
         }
 
-        force *= 1000;
+        force *= 200;
 
         GetComponent<Rigidbody>().velocity = new Vector3(speed, 0f, 0f);
 	}

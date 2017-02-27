@@ -18,11 +18,11 @@ public class CooldowsHandler : MonoBehaviour
     {
         try
         {
-            for (int i = 0; i < cooldownsTexts.Length; i++)
+            for (int i = 0; i < cooldowns.Length; i++)
             {
                 string textOnCounter = "";
 
-                if (cooldowns[i] < 0)
+                if (cooldowns[i] <= 0)
                 {
                     textOnCounter = "0.0";
                 }

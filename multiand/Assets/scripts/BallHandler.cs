@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class BallHandler : MonoBehaviour {
-    //public float wartosc;
+    public float positionZ;
     Rigidbody rb;
 
     void Start() 
@@ -27,7 +27,7 @@ public class BallHandler : MonoBehaviour {
 
     public void RandomizePosition()
     {
-        float randomZ = Random.Range(-40f, 40f);
+        float randomZ = Random.Range(-positionZ, positionZ);
         transform.position = new Vector3(0f, gameObject.transform.position.y, randomZ);
         transform.rotation = new Quaternion(0f, 0f, 0f, 0f);
         GetComponent<Rigidbody>().velocity = Vector3.zero;

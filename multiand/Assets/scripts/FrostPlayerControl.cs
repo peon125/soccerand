@@ -10,8 +10,8 @@ public class FrostPlayerControl : MonoBehaviour
     public float[] delays;
     public float speed, boundary;
     public float[] cooldowns;
-    public Sprite[] spellsPics;
-    public Sprite avatar, bigPic;
+    public Sprite[] pics;
+    public string[] descriptions;
     Transform bulletsTransform;
     PlayerHandler ph;
     GameObject ball;
@@ -24,7 +24,8 @@ public class FrostPlayerControl : MonoBehaviour
 
     void Start() 
     {
-        isABot = false;ph = transform.parent.GetComponent<PlayerHandler>();
+        isABot = false;
+        ph = transform.parent.GetComponent<PlayerHandler>();
         buttons =  ph.getButtons();
         cooldownTexts = ph.getCooldownTexts();
         buttonsValues = ph.getButtonsValues();
@@ -34,10 +35,10 @@ public class FrostPlayerControl : MonoBehaviour
         canFireSuperShot = false;
         ball = GameObject.FindGameObjectWithTag("ball");
 
-        if (buttons[0] == "0")
+        /*if (buttons[0] == "0")
         {
             isABot = true;
-        }
+        }*/
     }
 
     void Update() 
@@ -71,14 +72,16 @@ public class FrostPlayerControl : MonoBehaviour
     {
         if(buttonsValues[1] == 1 && cooldowns[0] <= 0)
         {
-            GameObject shot = Instantiate(firesPrefabs[0], firesPrefabs[0].transform.position + transform.position, firesPrefabs[0].transform.rotation, bulletsTransform) as GameObject;
+            Vector3 pos = new Vector3(transform.position.x, firesPrefabs[0].transform.position.y, transform.position.z);
+            GameObject shot = Instantiate(firesPrefabs[0], pos, firesPrefabs[0].transform.rotation, bulletsTransform) as GameObject;
             shot.GetComponent<MeshRenderer>().material.color = transform.GetChild(0).GetComponent<Renderer>().material.color;
             cooldowns[0] = delays[0];
         }
 
         if (buttonsValues[2] == 1 && cooldowns[1] <= 0 && canFireSuperShot)
         {
-            GameObject shot = Instantiate(firesPrefabs[3], firesPrefabs[3].transform.position + transform.position, firesPrefabs[3].transform.rotation, bulletsTransform) as GameObject;
+            Vector3 pos = new Vector3(transform.position.x, firesPrefabs[3].transform.position.y, transform.position.z);
+            GameObject shot = Instantiate(firesPrefabs[3], pos, firesPrefabs[3].transform.rotation, bulletsTransform) as GameObject;
             shot.GetComponent<MeshRenderer>().material.color = transform.GetChild(0).GetComponent<Renderer>().material.color;
             cooldowns[1] = delays[3];
 
@@ -89,11 +92,11 @@ public class FrostPlayerControl : MonoBehaviour
             float posX = 0;
             if (transform.position.x > 0)
             {
-                posX = transform.position.x - 40;
+                posX = transform.position.x - 8;
             }
             else
             {
-                posX = transform.position.x + 40;
+                posX = transform.position.x + 8;
             }
 
             Vector3 pos = new Vector3(posX, firesPrefabs[1].transform.position.y, transform.position.z);
@@ -105,7 +108,8 @@ public class FrostPlayerControl : MonoBehaviour
 
         if(buttonsValues[3] == 1 && cooldowns[2] <= 0)
         {
-            GameObject shot = Instantiate(firesPrefabs[2], firesPrefabs[2].transform.position + transform.position, firesPrefabs[2].transform.rotation, bulletsTransform) as GameObject;
+            Vector3 pos = new Vector3(transform.position.x, firesPrefabs[2].transform.position.y, transform.position.z);
+            GameObject shot = Instantiate(firesPrefabs[2], pos, firesPrefabs[2].transform.rotation, bulletsTransform) as GameObject;
             ShotHandler shotHandler = shot.GetComponent<ShotHandler>();
             shot.GetComponent<MeshRenderer>().material.color = transform.GetChild(0).GetComponent<Renderer>().material.color;
             cooldowns[2] = delays[2];

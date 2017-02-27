@@ -10,8 +10,8 @@ public class ControlCharacter : MonoBehaviour
     public float[] delays;
     public float speed, boundary;
     public float[] cooldowns;
-    public Sprite[] spellsPics;
-    public Sprite avatar, bigPic;
+    public Sprite[] pics;
+    public string[] descriptions;
     PlayerHandler ph;
     Transform bulletsTransform;
     GameObject ball;
@@ -35,10 +35,10 @@ public class ControlCharacter : MonoBehaviour
         bulletsTransform = GameObject.Find("bullets").transform;
         ball = GameObject.FindGameObjectWithTag("ball");
 
-        if (buttons[0] == "0")
+        /*if (buttons[0] == "0")
         {
             isABot = true;
-        }
+        }*/
     }
 
     void Update() 
@@ -64,21 +64,21 @@ public class ControlCharacter : MonoBehaviour
 
     void Move()
     {
-        transform.position += new Vector3(0f, 0f, (float)Math.Round(buttonsValues[0] * speed));
+        Debug.Log(buttonsValues[0]);
+        transform.position += new Vector3(0f, 0f, (float)buttonsValues[0] * speed);
         transform.position = new Vector3(characterDefaultXPosistion, transform.position.y, Mathf.Clamp(transform.position.z, -boundary, boundary));
     }
 
     void Shoot()
     {
-        for (int j = 1; j < buttons.Length; j++)
+        for (int j = 1; j < buttonsValues.Length; j++)
         {
             int i = j - 1;
-            if (buttonsValues[i] == 1 && cooldowns[i] <= 0)
+            if (buttonsValues[j] == 1 && cooldowns[i] <= 0)
             {
-                GameObject shot = Instantiate(firesPrefabs[i], firesPrefabs[i].transform.position + transform.position, firesPrefabs[i].transform.rotation, bulletsTransform);
-                ShotHandler shotHandler = shot.GetComponent<ShotHandler>();
-                shotHandler.setColorToChangeOn(transform.GetChild(0).GetComponent<Renderer>().material.color);
-
+                Vector3 pos = new Vector3(transform.position.x, firesPrefabs[i].transform.position.y, transform.position.z);
+                GameObject shot = Instantiate(firesPrefabs[i], pos, firesPrefabs[i].transform.rotation, bulletsTransform) as GameObject;
+                shot.GetComponent<MeshRenderer>().material.color = transform.GetChild(0).GetComponent<Renderer>().material.color;
                 cooldowns[i] = delays[i];
                 break;
             }

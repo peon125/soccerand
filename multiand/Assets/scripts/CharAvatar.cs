@@ -16,7 +16,7 @@ public class CharAvatar : MonoBehaviour
         gameController = GameObject.Find("gameController").GetComponent<Menu2Control>();
 	}
 
-    void OnMouseDown()
+    public void Choose()
     {
         if (whichPlayer == "white")
         {
@@ -38,6 +38,11 @@ public class CharAvatar : MonoBehaviour
         }
     }
 
+    public string getWhichPlayer()
+    {
+        return whichPlayer;
+    }
+
     public void setWhichPlayer(string s)
     {
         whichPlayer = s;
@@ -47,4 +52,10 @@ public class CharAvatar : MonoBehaviour
     {
         index = i;
     }
+
+    public int getIndex()
+    {
+        return index;
+    }
+
 }
