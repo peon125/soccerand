@@ -1,18 +1,19 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj" RefactoringSettings.EnableRefactorings="True">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\scripts\CooldowsHandler.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\scripts\FrostPlayerControl.cs">
     <Files>
       <File FileName="Assets\scripts\BallHandler.cs" Line="1" Column="1" />
       <File FileName="Assets\scripts\PlayMenu1.cs" Line="1" Column="1" />
       <File FileName="Assets\scripts\WhoPlaysHandler.cs" Line="1" Column="1" />
-      <File FileName="Assets\scripts\Menu1Control.cs" Line="12" Column="6" />
+      <File FileName="Assets\scripts\Menu1Control.cs" Line="1" Column="1" />
       <File FileName="Assets\scripts\CharAvatar.cs" Line="1" Column="1" />
-      <File FileName="Assets\scripts\FrostWall.cs" Line="31" Column="1" />
-      <File FileName="Assets\scripts\FrostPlayerControl.cs" Line="75" Column="13" />
+      <File FileName="Assets\scripts\FrostWall.cs" Line="1" Column="1" />
       <File FileName="Assets\scripts\ControlCharacter.cs" Line="67" Column="1" />
-      <File FileName="Assets\scripts\Menu2Control.cs" Line="32" Column="1" />
-      <File FileName="Assets\scripts\PlayerHandler.cs" Line="36" Column="6" />
-      <File FileName="Assets\scripts\CooldowsHandler.cs" Line="21" Column="42" />
+      <File FileName="Assets\scripts\Menu2Control.cs" Line="1" Column="1" />
+      <File FileName="Assets\scripts\PlayerHandler.cs" Line="32" Column="153" />
+      <File FileName="Assets\scripts\CooldowsHandler.cs" Line="1" Column="1" />
+      <File FileName="Assets\scripts\GameController.cs" Line="1" Column="1" />
+      <File FileName="Assets\scripts\FrostPlayerControl.cs" Line="79" Column="10" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

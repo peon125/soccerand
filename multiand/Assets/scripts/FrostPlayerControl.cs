@@ -64,7 +64,7 @@ public class FrostPlayerControl : MonoBehaviour
 
     void Move()
     {
-        transform.position += new Vector3(0f, 0f, (float)Math.Round(buttonsValues[0] * speed));
+        transform.position += new Vector3(0f, 0f, (float)(buttonsValues[0] * speed));
         transform.position = new Vector3(characterDefaultXPosistion, transform.position.y, Mathf.Clamp(transform.position.z, -boundary, boundary));
     }
 

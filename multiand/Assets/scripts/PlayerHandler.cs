@@ -24,12 +24,12 @@ public class PlayerHandler : MonoBehaviour
         if (gameObject.name == "player1")
         {
             //buttonsSet = gameSetter.getWhiteSet();
-            GameObject character = Instantiate(gameSetter.getWhiteCharacter(), new Vector3(startingPositionX, 5, startingPositionZ), new Quaternion(0, 0, 0, 0), transform);
+            GameObject character = Instantiate(gameSetter.getWhiteCharacter(), new Vector3(startingPositionX, 1, startingPositionZ), new Quaternion(0, 90, 0, 0), transform);
         }
         else if (gameObject.name == "player2")
         {
             //buttonsSet = gameSetter.getBlackSet();
-            GameObject character = Instantiate(gameSetter.getBlackCharacter(), new Vector3(startingPositionX, 5, startingPositionZ), new Quaternion(0, 90, 0, 0), transform);   
+            GameObject character = Instantiate(gameSetter.getBlackCharacter(), new Vector3(startingPositionX, 1, startingPositionZ), new Quaternion(0, -90, 0, 0), transform);   
         }
         
         cooldownTexts = cooldownHandler.cooldownsTexts;
