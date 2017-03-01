@@ -64,7 +64,6 @@ public class ControlCharacter : MonoBehaviour
 
     void Move()
     {
-        Debug.Log(buttonsValues[0]);
         transform.position += new Vector3(0f, 0f, (float)buttonsValues[0] * speed);
         transform.position = new Vector3(characterDefaultXPosistion, transform.position.y, Mathf.Clamp(transform.position.z, -boundary, boundary));
     }

@@ -17,10 +17,10 @@ public class Menu2Control : MonoBehaviour
 
 	void Start () 
     {
-        gameSet = GameObject.Find("gameSetter").GetComponent<GameSet>();
-        chars = gameSet.getCharacters();
         pics = new Sprite[2, 5];
         descriptions = new string[2,3];
+        gameSet = GameObject.Find("gameSetter").GetComponent<GameSet>();
+        chars = gameSet.getCharacters();
         for (int i = 0; i < pics.GetLength(1); i++)
         {
             pics[0, i] = chars[0].GetComponent<ControlCharacter>().pics[i];
@@ -40,7 +40,7 @@ public class Menu2Control : MonoBehaviour
             imgWhite.name = "whiteChar" + (i + 1);
             imgWhite.GetComponent<CharAvatar>().setIndex(i);
             imgWhite.GetComponent<CharAvatar>().setWhichPlayer("white");
-            Image imgBlack = (Image)Instantiate(imgPrefab, new Vector3(blackList.transform.position.x, blackList.transform.position.y - i * distOnList, 0), new Quaternion(0, 0, 0, 0), blackList);
+            Image imgBlack = (Image)Instantiate(imgPrefab, new Vector3(blackList.transform.position.x, blackList.transform.position.y + i * distOnList, 0), new Quaternion(0, 0, 0, 0), blackList);
             imgBlack.name = "blackChar" + (i + 1);
             imgBlack.GetComponent<CharAvatar>().setIndex(i);
             imgBlack.GetComponent<CharAvatar>().setWhichPlayer("black");

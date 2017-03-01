@@ -18,7 +18,7 @@ public class CooldowsHandler : MonoBehaviour
     {
         try
         {
-            for (int i = 0; i < cooldowns.Length; i++)
+            for (int i = 0; i < cooldownsTexts.Length; i++)
             {
                 string textOnCounter = "";
 
@@ -46,7 +46,7 @@ public class CooldowsHandler : MonoBehaviour
         }
         catch(Exception ex)
         {
-            Debug.Log(ex);
+            Debug.Log("jescze nie otrzymałem tablicy cooldown");
         }
 	}
 

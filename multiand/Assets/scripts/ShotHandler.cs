@@ -18,7 +18,7 @@ public class ShotHandler : MonoBehaviour {
             force = -force;
         }
 
-        force *= 200;
+        force *=0;
 
         GetComponent<Rigidbody>().velocity = new Vector3(speed, 0f, 0f);
 	}
@@ -29,7 +29,7 @@ public class ShotHandler : MonoBehaviour {
 
         if(collid.gameObject.tag == "ball")
         {
-            collid.gameObject.GetComponent<Rigidbody>().AddForce (new Vector3(force, 0f, 0f));
+            //collid.gameObject.GetComponent<Rigidbody>().AddForce (new Vector3(force, 0f, 0f));
         }
     }
 

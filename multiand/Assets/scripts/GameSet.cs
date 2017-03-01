@@ -6,15 +6,26 @@ public class GameSet : MonoBehaviour
 {
     public GameObject[] characters;
     public AudioClip dadadedadadada;
-    int whiteIndex, blackIndex;
-    bool whitePlays, blackPlays;
+    public int whiteIndex, blackIndex;
+    public bool whitePlays, blackPlays;
+    bool doChangeName;
 
 	void Start() 
     {
+        if(GameObject.Find("gameSetter").tag == "Default")
+        {
+            Destroy(gameObject);
+        }
+
+        doChangeName = true;
         GetComponent<AudioSource>().Play();
 
         DontDestroyOnLoad(gameObject);
 	}
+
+    void Update()
+    {
+    }
 
     public bool getWhitePlays()
     {

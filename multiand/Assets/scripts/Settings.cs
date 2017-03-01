@@ -9,6 +9,11 @@ public class Settings : MonoBehaviour
 
 	void Start()
     {
+        if(GameObject.Find("settings").tag == "Default")
+        {
+            Destroy(gameObject);
+        }
+
         DontDestroyOnLoad(gameObject);
         settingsGUI = transform.GetChild(0).gameObject;
         settingsGUI.SetActive(false);
