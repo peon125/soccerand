@@ -45,7 +45,33 @@ public class Menu2Control : MonoBehaviour
             imgBlack.GetComponent<CharAvatar>().setIndex(i);
             imgBlack.GetComponent<CharAvatar>().setWhichPlayer("black");
         }
+
+        if(!gameSet.getWhitePlays())
+        {
+            WhiteIsABot();
+        }
+
+        if(!gameSet.getBlackPlays())
+        {
+            BlackIsABot();
+        }
 	}
+
+    void WhiteIsABot()
+    {
+        int r = Random.Range(0, gameSet.getCharacters().Length);
+        GameObject randomizedCharacter = gameSet.getCharacters()[r];
+        gameSet.setWhiteCharacter(r);
+        setWhitePicsAndDesc(r);
+    }
+
+    void BlackIsABot()
+    {
+        int r = Random.Range(0, gameSet.getCharacters().Length);
+        GameObject randomizedCharacter = gameSet.getCharacters()[r];
+        gameSet.setBlackCharacter(r);
+        setBlackPicsAndDesc(r);
+    }
 
     public void setWhitePicsAndDesc(int i)
     {

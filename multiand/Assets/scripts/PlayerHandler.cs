@@ -8,12 +8,13 @@ public class PlayerHandler : MonoBehaviour
     public float startingPositionX, startingPositionZ;
     public CooldowsHandler cooldownHandler;
     Text[] cooldownTexts;
-    string[] buttonsSet;
     int[] buttonsValues;
     GameSet gameSetter;
+    bool isABot;
 	
 	void Start () 
     {
+        isABot = false;
         gameSetter = GameObject.Find("gameSetter").GetComponent<GameSet>();
         buttonsValues = new int[4];
         for (int i = 0; i < buttonsValues.Length; i++)
@@ -25,11 +26,13 @@ public class PlayerHandler : MonoBehaviour
         {
             //buttonsSet = gameSetter.getWhiteSet();
             GameObject character = Instantiate(gameSetter.getWhiteCharacter(), new Vector3(startingPositionX, 1, startingPositionZ), new Quaternion(0, 90, 0, 0), transform);
+            isABot = !(gameSetter.getWhitePlays());
         }
         else if (gameObject.name == "player2")
         {
             //buttonsSet = gameSetter.getBlackSet();
             GameObject character = Instantiate(gameSetter.getBlackCharacter(), new Vector3(startingPositionX, 1, startingPositionZ), new Quaternion(0, -90, 0, 0), transform);   
+            isABot = !(gameSetter.getBlackPlays());
         }
         
         cooldownTexts = cooldownHandler.cooldownsTexts;
@@ -38,11 +41,6 @@ public class PlayerHandler : MonoBehaviour
     public Text[] getCooldownTexts()
     {
         return cooldownTexts; // niepotrzebna funkcja
-    }
-
-    public string[] getButtons()
-    {
-        return buttonsSet;
     }
 
     public void setButtonValueToOne(int i)
@@ -65,4 +63,8 @@ public class PlayerHandler : MonoBehaviour
         return buttonsValues;
     }
 
+    public bool getIsABot()
+    {
+        return isABot;
+    }
 }

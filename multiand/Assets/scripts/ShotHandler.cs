@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShotHandler : MonoBehaviour {
     public float speed;
@@ -18,7 +19,7 @@ public class ShotHandler : MonoBehaviour {
             force = -force;
         }
 
-        force *=0;
+        force *=100;
 
         GetComponent<Rigidbody>().velocity = new Vector3(speed, 0f, 0f);
 	}
@@ -29,7 +30,8 @@ public class ShotHandler : MonoBehaviour {
 
         if(collid.gameObject.tag == "ball")
         {
-            //collid.gameObject.GetComponent<Rigidbody>().AddForce (new Vector3(force, 0f, 0f));
+            Rigidbody r = GetComponent<Rigidbody>();
+            collid.gameObject.GetComponent<Rigidbody>().AddForce ( force * r.velocity);
         }
     }
 

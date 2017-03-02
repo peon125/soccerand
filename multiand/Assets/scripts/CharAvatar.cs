@@ -18,7 +18,7 @@ public class CharAvatar : MonoBehaviour
 
     public void Choose()
     {
-        if (whichPlayer == "white")
+        if (whichPlayer == "white" && gameSet.getWhitePlays())
         {
             Destroy(GameObject.Find("whiteArrow"));
             GameObject arrow = Instantiate(arrowPrefab, new Vector3(transform.position.x - 20, transform.position.y, transform.position.z), new Quaternion(0, 0, 0, 0), transform);
@@ -27,7 +27,7 @@ public class CharAvatar : MonoBehaviour
             gameSet.setWhiteCharacter(index);
             gameController.setWhitePicsAndDesc(index);
         } 
-        else if(whichPlayer == "black")
+        else if(whichPlayer == "black" && gameSet.getBlackPlays())
         {
             Destroy(GameObject.Find("blackArrow"));
             GameObject arrow = Instantiate(arrowPrefab, new Vector3(transform.position.x + 20, transform.position.y, transform.position.z), new Quaternion(0, 90, 0, 0), transform);

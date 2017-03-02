@@ -23,10 +23,6 @@ public class GameSet : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 	}
 
-    void Update()
-    {
-    }
-
     public bool getWhitePlays()
     {
         return whitePlays;

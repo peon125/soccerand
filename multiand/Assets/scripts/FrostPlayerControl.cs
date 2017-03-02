@@ -18,15 +18,13 @@ public class FrostPlayerControl : MonoBehaviour
     CooldowsHandler cooldownsHandler;
     Text[] cooldownTexts;
     float characterDefaultXPosistion;
-    string[] buttons;
     bool isABot, canFireSuperShot;
     int[] buttonsValues;
 
     void Start() 
     {
-        isABot = false;
         ph = transform.parent.GetComponent<PlayerHandler>();
-        buttons =  ph.getButtons();
+        isABot = ph.getIsABot();
         cooldownTexts = ph.getCooldownTexts();
         buttonsValues = ph.getButtonsValues();
         characterDefaultXPosistion = transform.position.x;
@@ -34,11 +32,6 @@ public class FrostPlayerControl : MonoBehaviour
         bulletsTransform = GameObject.Find("bullets").transform;
         canFireSuperShot = false;
         ball = GameObject.FindGameObjectWithTag("ball");
-
-        /*if (buttons[0] == "0")
-        {
-            isABot = true;
-        }*/
     }
 
     void Update() 

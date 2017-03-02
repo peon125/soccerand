@@ -18,15 +18,13 @@ public class ControlCharacter : MonoBehaviour
     CooldowsHandler cooldownsHandler;
     Text[] cooldownTexts;
     float characterDefaultXPosistion;
-    string[] buttons;
     bool isABot;
     int[] buttonsValues;
 
     void Start() 
     {
-        isABot = false;
         ph = transform.parent.GetComponent<PlayerHandler>();
-        buttons =  ph.getButtons();
+        isABot = ph.getIsABot();
         buttonsValues = ph.getButtonsValues();
         cooldownTexts = ph.getCooldownTexts();
         characterDefaultXPosistion = transform.position.x;
@@ -34,11 +32,6 @@ public class ControlCharacter : MonoBehaviour
         cooldownsHandler = ph.cooldownHandler;
         bulletsTransform = GameObject.Find("bullets").transform;
         ball = GameObject.FindGameObjectWithTag("ball");
-
-        /*if (buttons[0] == "0")
-        {
-            isABot = true;
-        }*/
     }
 
     void Update() 
